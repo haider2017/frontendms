@@ -32,6 +32,7 @@ pipeline {
                 script {
                     docker.withRegistry( '', registryCredential ) {
                         sh 'docker push devopslab3img1/frontendms:latest'
+                    }
                 }
             }
         }

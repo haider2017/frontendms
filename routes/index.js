@@ -1,6 +1,6 @@
 const express   = require('express');
 const router    = express.Router();
-const seneca    = require('seneca')();
+const seneca    = require('seneca')({timeout:300000});
 
 router.get('/', function(req, res, next) {
     let net = req.query.net;

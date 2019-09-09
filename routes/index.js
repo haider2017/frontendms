@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     .client({    
         type: 'amqp',
         pin : 'role:clientservice,cmd:*',
-        url : process.env.AMQP_URL
+        url : "rabbitmq:5672"
     })//giving the image name of second microservice
     .act(`role:clientservice,cmd:salestax,net:${net}`, async function (err, result) {
         if(result)

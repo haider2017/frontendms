@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontendms
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        tier: server
+        app: dice
+    spec:
+      containers:
+      - name: server
+        image: devopslab3img1/frontendms
+        ports:
+        - containerPort: 8080
+          name: tcp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server
+spec:
+  type: NodePort
+  selector:
+    tier: server
+    app: dice
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 31000

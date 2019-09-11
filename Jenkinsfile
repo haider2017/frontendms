@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build Application') {
             steps {
-               sh 'git pull https://github.com/haider2017/frontendms.git dev'
+               sh 'git pull https://github.com/haider2017/frontendms.git'
                sh 'echo **** Installing NPM Dependencies ****'
                sh 'npm install'
             }
@@ -33,6 +33,18 @@ pipeline {
                     docker.withRegistry( '', registryCredential ) {
                         sh 'docker push devopslab3img1/frontendms:latest'
                     }
+                }
+            }
+        }
+        
+        stage('Update Deployment'){
+            steps{
+                dir('deployment')
+                {
+                    sh 'stop minikube'
+                    sh 'start minikube'
+                    sh 'kubectl apply deployment/rabbitmq.yaml'
+                    sh 'kubectl apply deployment/frontend.yaml'
                 }
             }
         }

@@ -41,8 +41,8 @@ pipeline {
             steps{
                 dir('deployment')
                 {
-                    sh 'stop minikube'
-                    sh 'start minikube'
+                    sh 'minikube stop|| true'
+                    sh 'minikube start'
                     sh 'kubectl apply deployment/rabbitmq.yaml'
                     sh 'kubectl apply deployment/frontend.yaml'
                 }

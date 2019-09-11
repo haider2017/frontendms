@@ -20,7 +20,6 @@ pipeline {
                 {
                     // sh 'minikube stop|| true'
                     // sh 'minikube start'
-                    sh 'cd deployment'
                     sh 'kubectl apply -f rabbitmq.yaml'
                     sh 'kubectl apply -f frontend.yaml'
                 }

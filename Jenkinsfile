@@ -41,10 +41,8 @@ pipeline {
             steps{
                 dir('deployment')
                 {
-                    sh 'minikube stop || true'
-                    sh 'minikube start'
-                    sh 'kubectl apply -f rabbitmq.yaml'
-                    sh 'kubectl apply -f frontend.yaml'
+                    sh 'ls'
+                    sh 'pwd'
                 }
             }
         }

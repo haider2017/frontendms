@@ -43,8 +43,8 @@ pipeline {
                 {
                     sh 'minikube stop|| true'
                     sh 'minikube start'
-                    sh 'kubectl apply deployment/rabbitmq.yaml'
-                    sh 'kubectl apply deployment/frontend.yaml'
+                    sh 'kubectl apply -f deployment/rabbitmq.yaml'
+                    sh 'kubectl apply -f deployment/frontend.yaml'
                 }
             }
         }
